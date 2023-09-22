@@ -3,4 +3,4 @@ project(bucketSort C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(bucketSort main.c)
+add_executable(bucketSort main.c bucketSort.c bucketSort.h)
