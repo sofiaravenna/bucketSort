@@ -42,6 +42,11 @@ void bucket_Sort(int *array) {
         enlistar_Bucket(bucket1, array[i]);
     }
 
+    for(int i=0; i < CANT_BUCKETS; i++){
+        ordenar_Buckets(bucket1[i]);
+    }
+
+
 
 
     Lista * bucket2[CANT_BUCKETS];
@@ -58,7 +63,7 @@ void bucket_Sort(int *array) {
 
 
 int hashing_1(int array) {
-    return array%CANT_BUCKETS;
+    return array/CANT_BUCKETS;
 }
 
 void enlistar_Bucket(Lista **bucket, int array) {
@@ -70,6 +75,27 @@ void enlistar_Bucket(Lista **bucket, int array) {
     }
     nodo->sig = bucket[num_Bucket]->cabecera;
     bucket[num_Bucket]->cabecera = nodo;
+}
+
+int hashing_2(int array) {
+
+
+
+    return 0;
+}
+
+void ordenar_Buckets(Lista *bucket) {
+    if(bucket->cabecera == NULL || bucket->cabecera->sig == NULL){
+        return;
+    }
+    Nodo * act = bucket->cabecera;
+
+
+    while(act != NULL){
+        Nodo * sig = act->sig;
+    }
+
+
 }
 
 void imprimir(Lista *lista) {
