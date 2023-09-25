@@ -22,10 +22,9 @@ Nodo* newNodo(int valor);
 Lista * newLista();
 
 void imprimir_Lista(Lista *lista);
-void insertar_Bucket(Lista * bucket[CANT_BUCKETS], int array);
+void enlistar_Bucket(Lista * bucket[CANT_BUCKETS], int array);
 void bucket_Sort(int * array);
-void inicializar_Buckets(Lista * bucket[CANT_BUCKETS]);
-int  hashing_1(Lista );
+int  hashing_1(int array);
 
 
 

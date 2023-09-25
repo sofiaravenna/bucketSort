@@ -33,43 +33,43 @@ Lista *newLista() {
 
 void bucket_Sort(int *array) {
     Lista * bucket1[CANT_BUCKETS];
-    inicializar_Buckets(bucket1);
+
+    for(int i=0; i < CANT_BUCKETS; i++){
+        bucket1[i] = newLista();
+    }
 
     for(int i=0; i < SIZE_ARREGLO; i++){
-        insertar_Bucket(bucket1, array[i]);
+        enlistar_Bucket(bucket1, array[i]);
     }
 
 
 
     Lista * bucket2[CANT_BUCKETS];
-    inicializar_Buckets(bucket2);
 
-
-
-
-
-}
-
-void inicializar_Buckets(Lista **bucket) {
     for(int i=0; i<CANT_BUCKETS; i++){
-        bucket[i] = newLista();
+        bucket2[i] = newLista();
     }
+
+
+
+
 }
 
 
-int hashing_1(int * array) {
+
+int hashing_1(int array) {
     return array%CANT_BUCKETS;
 }
 
-void insertar_Bucket(Lista **bucket, int array) {
-    int num_Bucket = hashing_1();
-    Nodo * new = newNodo(array);
+void enlistar_Bucket(Lista **bucket, int array) {
+    int num_Bucket = hashing_1(array);
+    Nodo * nodo = newNodo(array);
     if(bucket[num_Bucket]->cabecera == NULL){
-        bucket[num_Bucket]->cabecera = new;
+        bucket[num_Bucket]->cabecera = nodo;
         return;
     }
-    new->sig = bucket[num_Bucket]->cabecera;
-    bucket[num_Bucket]->cabecera = new;
+    nodo->sig = bucket[num_Bucket]->cabecera;
+    bucket[num_Bucket]->cabecera = nodo;
 }
 
 void imprimir(Lista *lista) {
@@ -98,7 +98,7 @@ void insertar(Lista *lista, Nodo *nodo) {
 
 
 }
-void imprimirTablaHash(Nodo **hashTable) {
+/*void imprimirTablaHash(Nodo **hashTable) {
     for (int i = 0; hashTable[i]<SIZE_ARREGLO; ++i) {
         Nodo * auxN = hashTable[i];
         while (auxN != NULL){
@@ -107,3 +107,5 @@ void imprimirTablaHash(Nodo **hashTable) {
         }
     }
 }
+
+ */
