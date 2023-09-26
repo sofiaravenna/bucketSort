@@ -66,6 +66,11 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
         act = act->sig;
     }
     if(act->num < nodo->num){
+        if(act == bucket[num_Bucket]->cabecera){
+            nodo->sig = bucket[num_Bucket]->cabecera;
+            bucket[num_Bucket]->cabecera = nodo;
+            return;
+        }
         nodo->sig = act;
         ant->sig = act;
         return;
@@ -76,10 +81,12 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
 void concatenar_Buckets(Lista **bucket, int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
         for(int j=0; j<CANT_BUCKETS; j++){
-            while(bucket[j] != NULL){
+            if(bucket[j]->cabecera != NULL){
                 Nodo * aux = bucket[j]->cabecera;
-                array[i] = aux->num;
-                aux = aux->sig;
+                while(aux != NULL){
+                    array[i] = aux->num;
+                    aux = aux->sig;
+                }
             }
         }
     }
@@ -87,6 +94,6 @@ void concatenar_Buckets(Lista **bucket, int *array) {
 
 void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
-        printf("%d", array[i]);
+        printf("  %d ", array[i]);
     }
 }

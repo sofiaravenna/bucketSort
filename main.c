@@ -6,13 +6,13 @@ int main() {
 
     int array_Ordenado[SIZE_ARREGLO] = {};
 
-    printf("Array desordenado:\n");
+    printf("\nArray desordenado:\n");
 
     imprimir_Array(array_Desordenado);
 
     bucket_Sort(array_Desordenado, array_Ordenado);
 
-    printf("Array ordenado:\n");
+    printf("\nArray ordenado:\n");
 
     imprimir_Array(array_Ordenado);
 
