@@ -42,10 +42,6 @@ void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
         enlistar_Bucket(bucket1, array_Desordenado[i]);
     }
 
-    for(int i=0; i < CANT_BUCKETS; i++){
-        ordenar_Buckets(bucket1[i]);
-    }
-
     concatenar_Buckets(bucket1, array_Ordenado);
 }
 
@@ -62,30 +58,19 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
         bucket[num_Bucket]->cabecera = nodo;
         return;
     }
-    nodo->sig = bucket[num_Bucket]->cabecera;
-    bucket[num_Bucket]->cabecera = nodo;
-}
-
-
-void ordenar_Buckets(Lista *bucket) {
-   /*
-
-    ACA HAY QUE HACER EL INSERTION SORT. O SEA, ORDENAR CADA BUCKET
-
-
-    if(bucket->cabecera == NULL || bucket->cabecera->sig == NULL){
+    //inserto en orden
+    Nodo * act = bucket[num_Bucket]->cabecera;
+    Nodo * ant = NULL;
+    while(act != NULL && act->num > nodo->num){
+        ant = act;
+        act = act->sig;
+    }
+    if(act->num < nodo->num){
+        nodo->sig = act;
+        ant->sig = act;
         return;
     }
-    Nodo * act = bucket->cabecera;
-
-
-    while(act != NULL){
-        Nodo * sig = act->sig;
-    }
-
-*/
-
-
+    act->sig = nodo;
 }
 
 void concatenar_Buckets(Lista **bucket, int *array) {
@@ -104,16 +89,4 @@ void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
         printf("%d", array[i]);
     }
-}
-
-void imprimir(Lista *lista) {
-    if(lista->cabecera == NULL) {
-        printf("La lista esta vacia.\n");
-        return;
-    }
-        Nodo * aux = lista->cabecera;
-        while(aux != NULL){
-            printf("%d\t",aux->num);
-            aux = aux->sig;
-        }
 }

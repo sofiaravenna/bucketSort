@@ -23,9 +23,7 @@ Lista * newLista();
 void enlistar_Bucket(Lista * bucket[], int dato_Array);
 void bucket_Sort(int * array_Desordenado, int * array_Ordenado);
 int hashing_1(int array);
-void ordenar_Buckets(Lista * bucket);
 void concatenar_Buckets(Lista * bucket[], int * array_Ordenado);
-
 void imprimir_Array(int * array);
 
 
