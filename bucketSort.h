@@ -20,19 +20,13 @@ typedef struct lista{
 
 Nodo* newNodo(int valor);
 Lista * newLista();
-
-void imprimir_Lista(Lista *lista);
-void enlistar_Bucket(Lista * bucket[CANT_BUCKETS], int array);
-void bucket_Sort(int * array);
+void enlistar_Bucket(Lista * bucket[], int dato_Array);
+void bucket_Sort(int * array_Desordenado, int * array_Ordenado);
 int hashing_1(int array);
-
 void ordenar_Buckets(Lista * bucket);
-void concatenar_Buckets(Lista * bucket[CANT_BUCKETS], int array[SIZE_ARREGLO]);
+void concatenar_Buckets(Lista * bucket[], int * array_Ordenado);
 
+void imprimir_Array(int * array);
 
-
-
-int hash(Lista *lista);
-int cardinal(Lista * lista);
 
 #endif //BUCKETSORT_BUCKETSORT_H

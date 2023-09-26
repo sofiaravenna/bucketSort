@@ -31,7 +31,7 @@ Lista *newLista() {
     return aux;
 }
 
-void bucket_Sort(int *array) {
+void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
     Lista * bucket1[CANT_BUCKETS];
 
     for(int i=0; i < CANT_BUCKETS; i++){
@@ -39,25 +39,14 @@ void bucket_Sort(int *array) {
     }
 
     for(int i=0; i < SIZE_ARREGLO; i++){
-        enlistar_Bucket(bucket1, array[i]);
+        enlistar_Bucket(bucket1, array_Desordenado[i]);
     }
 
     for(int i=0; i < CANT_BUCKETS; i++){
         ordenar_Buckets(bucket1[i]);
     }
 
-
-
-
-    Lista * bucket2[CANT_BUCKETS];
-
-    for(int i=0; i<CANT_BUCKETS; i++){
-        bucket2[i] = newLista();
-    }
-
-
-
-
+    concatenar_Buckets(bucket1, array_Ordenado);
 }
 
 
@@ -66,9 +55,9 @@ int hashing_1(int array) {
     return array/CANT_BUCKETS;
 }
 
-void enlistar_Bucket(Lista **bucket, int array) {
-    int num_Bucket = hashing_1(array);
-    Nodo * nodo = newNodo(array);
+void enlistar_Bucket(Lista **bucket, int dato_Array) {
+    int num_Bucket = hashing_1(dato_Array);
+    Nodo * nodo = newNodo(dato_Array);
     if(bucket[num_Bucket]->cabecera == NULL){
         bucket[num_Bucket]->cabecera = nodo;
         return;
@@ -77,14 +66,13 @@ void enlistar_Bucket(Lista **bucket, int array) {
     bucket[num_Bucket]->cabecera = nodo;
 }
 
-int hashing_2(int array) {
-
-
-
-    return 0;
-}
 
 void ordenar_Buckets(Lista *bucket) {
+   /*
+
+    ACA HAY QUE HACER EL INSERTION SORT. O SEA, ORDENAR CADA BUCKET
+
+
     if(bucket->cabecera == NULL || bucket->cabecera->sig == NULL){
         return;
     }
@@ -95,7 +83,27 @@ void ordenar_Buckets(Lista *bucket) {
         Nodo * sig = act->sig;
     }
 
+*/
 
+
+}
+
+void concatenar_Buckets(Lista **bucket, int *array) {
+    for(int i=0; i<SIZE_ARREGLO; i++){
+        for(int j=0; j<CANT_BUCKETS; j++){
+            while(bucket[j] != NULL){
+                Nodo * aux = bucket[j]->cabecera;
+                array[i] = aux->num;
+                aux = aux->sig;
+            }
+        }
+    }
+}
+
+void imprimir_Array(int *array) {
+    for(int i=0; i<SIZE_ARREGLO; i++){
+        printf("%d", array[i]);
+    }
 }
 
 void imprimir(Lista *lista) {
@@ -109,29 +117,3 @@ void imprimir(Lista *lista) {
             aux = aux->sig;
         }
 }
-void insertar(Lista *lista, Nodo *nodo) {
-    if(lista->cabecera == NULL){ //la lista esta vacia
-        lista->cabecera= nodo;
-        nodo->sig=NULL;
-        return;
-    }
-    Nodo * aux = lista->cabecera;
-    while(aux->sig != NULL){
-        aux = aux->sig;
-    }
-    aux->sig = nodo;
-    nodo->sig = NULL;
-
-
-}
-/*void imprimirTablaHash(Nodo **hashTable) {
-    for (int i = 0; hashTable[i]<SIZE_ARREGLO; ++i) {
-        Nodo * auxN = hashTable[i];
-        while (auxN != NULL){
-            printf("%s\t",auxN->key);
-            auxN = auxN->next;
-        }
-    }
-}
-
- */

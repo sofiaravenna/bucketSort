@@ -1,10 +1,15 @@
-#include <stdio.h>
+#include "bucketSort.h"
 
 int main() {
-    int array_Desordenado[] = {23, 4, 56, 12, 89, 34, 8, 17, 42, 6, 75, 29, 50, 10, 64, 38, 20, 5, 31, 55};
+    int array_Desordenado[SIZE_ARREGLO] = {23, 4, 56, 12, 89, 34, 8, 17, 42, 6};
 
+    int array_Ordenado[SIZE_ARREGLO] = {};
 
+    imprimir_Array(array_Desordenado);
 
+    bucket_Sort(array_Desordenado, array_Ordenado);
+
+    imprimir_Array(array_Ordenado);
 
     return 0;
 }
