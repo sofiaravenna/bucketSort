@@ -31,7 +31,7 @@ Lista *newLista() {
     return aux;
 }
 
-void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
+void bucket_Sort(int *array_Desordenado) {
     Lista * bucket1[CANT_BUCKETS];
 
     for(int i=0; i < CANT_BUCKETS; i++){
@@ -42,7 +42,7 @@ void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
         enlistar_Bucket(bucket1, array_Desordenado[i]);
     }
 
-    concatenar_Buckets(bucket1, array_Ordenado);
+    concatenar_Buckets(bucket1, array_Desordenado);
 
     imprimir_Buckets(bucket1);
 }

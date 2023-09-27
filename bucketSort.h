@@ -21,7 +21,7 @@ typedef struct lista{
 Nodo* newNodo(int valor);
 Lista * newLista();
 void enlistar_Bucket(Lista * bucket[], int dato_Array);
-void bucket_Sort(int * array_Desordenado, int * array_Ordenado);
+void bucket_Sort(int * array_Desordenado);
 int hashing_1(int array);
 void concatenar_Buckets(Lista * bucket[], int * array_Ordenado);
 void imprimir_Array(int * array);
