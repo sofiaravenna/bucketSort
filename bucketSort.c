@@ -42,13 +42,15 @@ void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
         enlistar_Bucket(bucket1, array_Desordenado[i]);
     }
 
- concatenar_Buckets(bucket1, array_Ordenado);
+    concatenar_Buckets(bucket1, array_Ordenado);
+
+    imprimir_Buckets(bucket1);
 }
 
 
 
 int hashing_1(int array) {
-    return array/CANT_BUCKETS;
+    return array * CANT_BUCKETS / (99 + 1);
 }
 
 void enlistar_Bucket(Lista **bucket, int dato_Array) {
@@ -56,7 +58,7 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
 
     Nodo * nodo = newNodo(dato_Array);
 
-    if(bucket[num_Bucket]->cabecera == NULL){
+    if(bucket[num_Bucket]->cabecera == NULL){ // la lista esta vacia, inserto al principio
         bucket[num_Bucket]->cabecera = nodo;
         return;
     }
@@ -67,16 +69,16 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
         ant = aux;
         aux = aux->sig;
     }
-    if(aux == NULL){
+    if(aux == NULL){ // inserto al final
         ant->sig = nodo;
         return;
     }
-    if(aux == bucket[num_Bucket]->cabecera){
+    if(aux == bucket[num_Bucket]->cabecera){ // inserto al principio sin perder cabeza
         nodo->sig = bucket[num_Bucket]->cabecera;
         bucket[num_Bucket]->cabecera = nodo;
         return;
     }
-    if(aux->num > nodo->num){
+    if(aux->num > nodo->num){ // inserto al medio
         nodo->sig = aux;
         ant->sig = nodo;
     }
@@ -113,5 +115,17 @@ void concatenar_Buckets(Lista **bucket, int *array) {
 void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
         printf("  %d ", array[i]);
+    }
+}
+
+void imprimir_Buckets(Lista **bucket) {
+    printf("\n\nImprimiendo buckets:");
+    for(int i=0; i< CANT_BUCKETS; i++){
+        printf("\nBucket %d\n", i);
+        Nodo * aux = bucket[i]->cabecera;
+        while(aux != NULL){
+            printf(" %d ", aux->num);
+            aux = aux->sig;
+        }
     }
 }

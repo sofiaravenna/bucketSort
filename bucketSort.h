@@ -5,7 +5,7 @@
 #ifndef BUCKETSORT_BUCKETSORT_H
 #define BUCKETSORT_BUCKETSORT_H
 
-#define SIZE_ARREGLO 10
+#define SIZE_ARREGLO 20
 #define CANT_BUCKETS 10
 
 
@@ -25,6 +25,7 @@ void bucket_Sort(int * array_Desordenado, int * array_Ordenado);
 int hashing_1(int array);
 void concatenar_Buckets(Lista * bucket[], int * array_Ordenado);
 void imprimir_Array(int * array);
+void imprimir_Buckets(Lista * bucket[]);
 
 
 #endif //BUCKETSORT_BUCKETSORT_H
