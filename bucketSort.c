@@ -72,16 +72,17 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
     if(aux == NULL){ // inserto al final
         ant->sig = nodo;
         return;
-    }
+    } // inserto al final
     if(aux == bucket[num_Bucket]->cabecera){ // inserto al principio sin perder cabeza
         nodo->sig = bucket[num_Bucket]->cabecera;
         bucket[num_Bucket]->cabecera = nodo;
         return;
-    }
+    } // desplazo el primer elemento
+                                                 // y el nodo pasa a ser cabecera
     if(aux->num > nodo->num){ // inserto al medio
         nodo->sig = aux;
         ant->sig = nodo;
-    }
+    } // inserto en el medio
 }
 
 void concatenar_Buckets(Lista **bucket, int *array) {
@@ -97,20 +98,8 @@ void concatenar_Buckets(Lista **bucket, int *array) {
         }
     }
 }
-    /*
-    for(int i=0; i<SIZE_ARREGLO; i++){
-        for(int j=0; j<CANT_BUCKETS; j++){
-            if(bucket[j]->cabecera != NULL){
-                Nodo * aux = bucket[j]->cabecera;
-                while(aux != NULL){
-                    array[i] = aux->num;
-                    aux = aux->sig;
-                }
-            }
-        }
-    }
-}
-     */
+
+
 
 void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){

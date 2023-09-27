@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    int array_Desordenado[SIZE_ARREGLO] = {23, 4, 56, 12, 86, 34, 8, 17, 42, 97, 66, 88, 0, 44, 51, 27, 39, 77, 99, 25};
+    int array_Desordenado[SIZE_ARREGLO] = {23, -4, 56, 12, 86, 34, 8, 17, 42, 97, 66, 88, 0, 44, 51, 27, 39, 77, 99, 25};
 
     int array_Ordenado[SIZE_ARREGLO] = {};
 
