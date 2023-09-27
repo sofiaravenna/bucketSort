@@ -42,7 +42,7 @@ void bucket_Sort(int *array_Desordenado, int * array_Ordenado) {
         enlistar_Bucket(bucket1, array_Desordenado[i]);
     }
 
-    concatenar_Buckets(bucket1, array_Ordenado);
+ concatenar_Buckets(bucket1, array_Ordenado);
 }
 
 
@@ -53,32 +53,49 @@ int hashing_1(int array) {
 
 void enlistar_Bucket(Lista **bucket, int dato_Array) {
     int num_Bucket = hashing_1(dato_Array);
+
     Nodo * nodo = newNodo(dato_Array);
+
     if(bucket[num_Bucket]->cabecera == NULL){
         bucket[num_Bucket]->cabecera = nodo;
         return;
     }
-    //inserto en orden
-    Nodo * act = bucket[num_Bucket]->cabecera;
+    Nodo * aux = bucket[num_Bucket]->cabecera;
     Nodo * ant = NULL;
-    while(act != NULL && act->num > nodo->num){
-        ant = act;
-        act = act->sig;
+
+    while(aux != NULL && aux->num < nodo->num){
+        ant = aux;
+        aux = aux->sig;
     }
-    if(act->num < nodo->num){
-        if(act == bucket[num_Bucket]->cabecera){
-            nodo->sig = bucket[num_Bucket]->cabecera;
-            bucket[num_Bucket]->cabecera = nodo;
-            return;
-        }
-        nodo->sig = act;
-        ant->sig = act;
+    if(aux == NULL){
+        ant->sig = nodo;
         return;
     }
-    act->sig = nodo;
+    if(aux == bucket[num_Bucket]->cabecera){
+        nodo->sig = bucket[num_Bucket]->cabecera;
+        bucket[num_Bucket]->cabecera = nodo;
+        return;
+    }
+    if(aux->num > nodo->num){
+        nodo->sig = aux;
+        ant->sig = nodo;
+    }
 }
 
 void concatenar_Buckets(Lista **bucket, int *array) {
+    int pos=0;
+    for(int i=0; i<CANT_BUCKETS; i++){
+        if(bucket[i]->cabecera != NULL){
+            Nodo * aux = bucket[i]->cabecera;
+            while(aux != NULL){
+                array[pos] = aux->num;
+                pos++;
+                aux = aux->sig;
+            }
+        }
+    }
+}
+    /*
     for(int i=0; i<SIZE_ARREGLO; i++){
         for(int j=0; j<CANT_BUCKETS; j++){
             if(bucket[j]->cabecera != NULL){
@@ -91,6 +108,7 @@ void concatenar_Buckets(Lista **bucket, int *array) {
         }
     }
 }
+     */
 
 void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
