@@ -43,17 +43,18 @@ void bucket_Sort(int *array_Desordenado) {
     }
 
     concatenar_Buckets(bucket1, array_Desordenado);
+
+    imprimir_Buckets(bucket1);
 }
 
 
 
 int hashing_1(int array) {
-    return array * CANT_BUCKETS / (99+ 1);
+    return array * CANT_BUCKETS / (99 + 1);
 }
 
 void enlistar_Bucket(Lista **bucket, int dato_Array) {
     int num_Bucket = hashing_1(dato_Array);
-
     Nodo * nodo = newNodo(dato_Array);
 
     if(bucket[num_Bucket]->cabecera == NULL){ // la lista esta vacia, inserto al principio
@@ -76,8 +77,8 @@ void enlistar_Bucket(Lista **bucket, int dato_Array) {
         bucket[num_Bucket]->cabecera = nodo;
         return;
     } // desplazo el primer elemento
-                                                 // y el nodo pasa a ser cabecera
-    if(aux->num > nodo->num){ // inserto al medio
+    // y el nodo pasa a ser cabecera
+    if(aux->num > nodo->num){
         nodo->sig = aux;
         ant->sig = nodo;
     } // inserto en el medio
@@ -96,8 +97,6 @@ void concatenar_Buckets(Lista **bucket, int *array) {
         }
     }
 }
-
-
 
 void imprimir_Array(int *array) {
     for(int i=0; i<SIZE_ARREGLO; i++){
