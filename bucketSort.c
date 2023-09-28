@@ -43,14 +43,12 @@ void bucket_Sort(int *array_Desordenado) {
     }
 
     concatenar_Buckets(bucket1, array_Desordenado);
-
-    imprimir_Buckets(bucket1);
 }
 
 
 
 int hashing_1(int array) {
-    return array * CANT_BUCKETS / (99 + 1);
+    return array * CANT_BUCKETS / (99+ 1);
 }
 
 void enlistar_Bucket(Lista **bucket, int dato_Array) {
