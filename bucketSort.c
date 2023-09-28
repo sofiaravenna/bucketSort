@@ -107,10 +107,10 @@ void imprimir_Array(int *array) {
 void imprimir_Buckets(Lista **bucket) {
     printf("\n\nImprimiendo buckets:");
     for(int i=0; i< CANT_BUCKETS; i++){
-        printf("\nBucket %d\n", i);
+        printf("\nBucket %d: ", i);
         Nodo * aux = bucket[i]->cabecera;
         while(aux != NULL){
-            printf(" %d ", aux->num);
+            printf(" %d   ", aux->num);
             aux = aux->sig;
         }
     }
