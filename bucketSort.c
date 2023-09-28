@@ -115,3 +115,77 @@ void imprimir_Buckets(Lista **bucket) {
         }
     }
 }
+
+// Segunda opcion. Para evitar insertar ordenado.
+
+int hashing_2_1(int array) {
+    return array%CANT_BUCKETS;
+}
+
+int hashing_2_2(int array) {
+    return array/CANT_BUCKETS;
+}
+
+void enlistar_2_1(Lista **bucket, int dato_Array) {
+    int num_Bucket = hashing_2_1(dato_Array);
+    Nodo * nuevo = newNodo(dato_Array);
+
+    if(bucket[num_Bucket]->cabecera == NULL){
+        bucket[num_Bucket]->cabecera = nuevo;
+        return;
+    }
+    Nodo * aux = bucket[num_Bucket]->cabecera;
+    while(aux->sig != NULL){
+        aux = aux->sig;
+    }
+    aux->sig = nuevo;
+}
+
+void enlistar_2_2(Lista **bucket, int dato_Array) {
+    int num_Bucket = hashing_2_2(dato_Array);
+    Nodo * nuevo = newNodo(dato_Array);
+
+    if(bucket[num_Bucket]->cabecera == NULL){
+        bucket[num_Bucket]->cabecera = nuevo;
+        return;
+    }
+    Nodo * aux = bucket[num_Bucket]->cabecera;
+    while(aux->sig != NULL){
+        aux = aux->sig;
+    }
+    aux->sig = nuevo;
+}
+
+void bucket_Sort_2(int *arrayDesordenado) {
+    Lista * bucket2_1[CANT_BUCKETS];
+
+    for(int i=0; i<CANT_BUCKETS; i++){
+        bucket2_1[i] = newLista();
+    }
+
+    for(int i=0; i<SIZE_ARREGLO; i++){
+        enlistar_2_1(bucket2_1, arrayDesordenado[i]);
+    }
+
+    imprimir_Buckets(bucket2_1);
+
+    concatenar_Buckets(bucket2_1, arrayDesordenado);
+
+    Lista * bucket2_2[CANT_BUCKETS];
+
+    for(int i=0; i<CANT_BUCKETS; i++){
+        bucket2_2[i] = newLista();
+    }
+
+    for(int i=0; i<SIZE_ARREGLO; i++){
+        enlistar_2_2(bucket2_2, arrayDesordenado[i]);
+    }
+
+    imprimir_Buckets(bucket2_2);
+
+
+    concatenar_Buckets(bucket2_2, arrayDesordenado);
+
+}
+
+

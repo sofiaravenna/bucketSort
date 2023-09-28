@@ -27,5 +27,11 @@ void concatenar_Buckets(Lista * bucket[], int * array_Ordenado);
 void imprimir_Array(int * array);
 void imprimir_Buckets(Lista * bucket[]);
 
+// secundarias por las dudas
+void bucket_Sort_2(int * arrayDesordenado);
+int hashing_2_1(int array);
+int hashing_2_2(int array);
+void enlistar_2_1(Lista * bucket[], int dato_Array);
+void enlistar_2_2(Lista * bucket[], int dato_Array);
 
 #endif //BUCKETSORT_BUCKETSORT_H
