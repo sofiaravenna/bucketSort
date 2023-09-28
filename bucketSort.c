@@ -8,13 +8,13 @@
 
 Nodo *newNodo(int valor) {
     Nodo * aux = NULL;
-    aux= malloc(sizeof(Nodo));
-    if(aux==NULL){
+    aux = malloc(sizeof(Nodo));
+    if(aux == NULL){
         printf("ERROR al asignar memoria.\n");
         exit(-1);
     }else{
-        aux->num=valor;
-        aux->sig=NULL;
+        aux->num = valor;
+        aux->sig = NULL;
     }
     return aux;
 }
